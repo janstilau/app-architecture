@@ -2,7 +2,7 @@ import Foundation
 
 class Item {
 	let uuid: UUID
-	private(set) var name: String
+	private(set) var name: String // private(set) 表示这个属性只能在类内设值, 类外不能修改
 	weak var store: Store?
 	weak var parent: Folder? {
 		didSet {
@@ -24,6 +24,7 @@ class Item {
 		}
 	}
 	
+	// item 如果被删除, 仅仅是 parent 的置空处理, 而 parent 中的集合操作, 是放在另外一端, 个人感觉不太好, 何不在这里也一并修改了另一端的内容..
 	func deleted() {
 		parent = nil
 	}
@@ -40,6 +41,9 @@ class Item {
 	}
 }
 
+/**
+	这里, 定义 key 的方式要比 oc 好, OC 只能定义字符串, 虽然在相应的文件中定义, 但是终究是全局字符串而没有和类进行了挂钩.
+*/
 extension Item {
 	static let changeReasonKey = "reason"
 	static let newValueKey = "newValue"

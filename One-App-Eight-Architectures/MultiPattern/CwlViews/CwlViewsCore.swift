@@ -461,13 +461,6 @@ extension Array: StateContainer where Element: StateContainer {
 	}
 }
 
-extension Optional: StateContainer where Wrapped: StateContainer {
-	var childValues: [StateContainer] {
-		guard let s = self else { return [] }
-		return [s]
-	}
-}
-
 // MARK: ### CwlBinder.swift ###
 
 #if os(macOS)

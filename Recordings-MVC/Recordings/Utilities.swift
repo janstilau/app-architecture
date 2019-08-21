@@ -20,6 +20,7 @@ extension UIViewController {
 		alert.addAction(UIAlertAction(title: cancel, style: .cancel) { _ in
 			callback(nil)
 		})
+		// 这里, 没有机会循环引用吗
 		alert.addAction(UIAlertAction(title: accept, style: .default) { _ in
 			callback(alert.textFields?.first?.text)
 		})

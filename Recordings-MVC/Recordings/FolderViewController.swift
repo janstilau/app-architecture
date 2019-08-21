@@ -15,6 +15,7 @@ class FolderViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// 这里, 直接用的 navigationItem 而没有用 self.
 		navigationItem.leftItemsSupplementBackButton = true
 		navigationItem.leftBarButtonItem = editButtonItem
 		
@@ -32,7 +33,7 @@ class FolderViewController: UITableViewController {
 			}
 		}
 		
-		// Handle changes to children of the current folder
+		// 过滤不需要处理消息的 vc.
 		guard let userInfo = notification.userInfo, userInfo[Item.parentFolderKey] as? Folder === folder else {
 			return
 		}
@@ -41,6 +42,9 @@ class FolderViewController: UITableViewController {
 		if let changeReason = userInfo[Item.changeReasonKey] as? String {
 			let oldValue = userInfo[Item.newValueKey]
 			let newValue = userInfo[Item.oldValueKey]
+			/**
+			这里, 用了一个比较新的模式匹配的方式.
+			*/
 			switch (changeReason, newValue, oldValue) {
 			case let (Item.removed, _, (oldIndex as Int)?):
 				tableView.deleteRows(at: [IndexPath(row: oldIndex, section: 0)], with: .right)
@@ -56,6 +60,9 @@ class FolderViewController: UITableViewController {
 		}
 	}
 	
+	/**
+	 这个东西, 每次使用的时候, 都在 guard 中.
+	*/
 	var selectedItem: Item? {
 		if let indexPath = tableView.indexPathForSelectedRow {
 			return folder.contents[indexPath.row]
@@ -79,6 +86,12 @@ class FolderViewController: UITableViewController {
 		performSegue(withIdentifier: .showRecorder, sender: self)
 	}
 	
+	/**
+	这里是 根据 segue 进行的跳转, 不过一般来说, 不用这些东西. 因为业务复杂起来, 无法使用 storyBoard
+	*/
+	/**
+	guard 关键字后面是没有办法加 {} 的, 所以下面的这种写法, 会非常常见.
+	*/
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		guard let identifier = segue.identifier else { return }
 		if identifier == .showFolder {
@@ -87,14 +100,15 @@ class FolderViewController: UITableViewController {
 				let selectedFolder = selectedItem as? Folder
 			else { fatalError() }
 			folderVC.folder = selectedFolder
-		}
-		else if identifier == .showRecorder {
-			guard let recordVC = segue.destination as? RecordViewController else { fatalError() }
+		} else if identifier == .showRecorder {
+			guard
+				let recordVC = segue.destination as? RecordViewController
+			else { fatalError() }
 			recordVC.folder = folder
 		} else if identifier == .showPlayer {
 			guard
-			let playVC = (segue.destination as? UINavigationController)?.topViewController as? PlayViewController,
-			let recording = selectedItem as? Recording
+				let playVC = (segue.destination as? UINavigationController)?.topViewController as? PlayViewController,
+				let recording = selectedItem as? Recording
 			else { fatalError() }
 			playVC.recording = recording
 			if let indexPath = tableView.indexPathForSelectedRow {
@@ -114,6 +128,9 @@ class FolderViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		/**
+		这里, 根据 item 的类型进行了分发处理. 好吗???
+		*/
 		let item = folder.contents[indexPath.row]
 		let identifier = item is Recording ? "RecordingCell" : "FolderCell"
 		let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)

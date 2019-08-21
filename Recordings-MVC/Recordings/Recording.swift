@@ -9,7 +9,7 @@ class Recording: Item, Codable {
 		return store?.fileURL(for: self)
 	}
 	override func deleted() {
-		store?.removeFile(for: self)
+		store?.removeFile(for: self) //  如果是录音的话, 先进行音频文件的删除, 然后是内存的逻辑关系的删除.
 		super.deleted()
 	}
 

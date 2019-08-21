@@ -79,8 +79,19 @@ class Folder: Item, Codable {
 		return (oldIndex, newIndex)
 	}
 	
+	/**
+		所以, 这里其实是数据改动逻辑的核心.
+	*/
 	func remove(_ item: Item) {
-		guard let index = contents.index(where: { $0 === item }) else { return }
+		/**
+		if (contents.index(where: { $0 === item }) == nil) { return }
+		这样是不是更好一点.
+		*/
+		guard
+			let index = contents.index(where: { $0 === item })
+		else {
+			return
+		}
 		item.deleted()
 		contents.remove(at: index)
 		store?.save(item, userInfo: [
