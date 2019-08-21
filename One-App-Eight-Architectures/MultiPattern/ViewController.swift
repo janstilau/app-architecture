@@ -63,7 +63,11 @@ class MultiViewController: UIViewController, UITextFieldDelegate {
 extension MultiViewController {
 	func mvcDidLoad() {
 		mvcTextField.text = model.value
+        /**
+         从这里我们看出来, model 发出通知然后 通知的监听者根据通知的内容进行修改, 是最标准的 MVC 的方式. 改变流向数据之后, 然后数据通知相关的界面改变. 而我们经常写的, 在 VC 的内部进行 model 的修改, 以及相关 view 的更新, 其实是隐藏了 model 的通知发出的这一个过程. 在一般情况下, 这种写法是没有问题的. 但是在业务复杂时, 通过 model 的通知, 会让代码简单一些.
+         */
 		mvcObserver = NotificationCenter.default.addObserver(forName: Model.textDidChange, object: nil, queue: nil) { [mvcTextField] (note) in
+            // mvcTextField 这里, 变成了一个 optional Value.
 			mvcTextField?.text = note.userInfo?[Model.textKey] as? String
 		}
 	}

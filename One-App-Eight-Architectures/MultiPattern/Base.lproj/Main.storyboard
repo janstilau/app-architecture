@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,12 +13,16 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MultiViewController" customModule="MultiPattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tTy-7L-8JE"/>
+                        <viewControllerLayoutGuide type="bottom" id="c4c-T7-va4"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="ZW8-0V-ZXE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-fI-btA">
                                         <rect key="frame" x="20" y="20" width="280" height="546"/>
@@ -233,15 +236,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1mr-9u-gbq"/>
+                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1mr-9u-gbq"/>
                             <constraint firstItem="ZW8-0V-ZXE" firstAttribute="bottom" secondItem="2fJ-8Q-XxX" secondAttribute="top" id="8PW-Zj-3zF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2fJ-8Q-XxX" secondAttribute="bottom" id="CvD-En-al2"/>
+                            <constraint firstItem="c4c-T7-va4" firstAttribute="top" secondItem="2fJ-8Q-XxX" secondAttribute="bottom" id="CvD-En-al2"/>
                             <constraint firstAttribute="trailing" secondItem="2fJ-8Q-XxX" secondAttribute="trailing" id="Cyw-nj-p8x"/>
                             <constraint firstItem="2fJ-8Q-XxX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EHa-D1-yV7"/>
-                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KQT-Gg-biW"/>
-                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Va2-GL-z8i"/>
+                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="KQT-Gg-biW"/>
+                            <constraint firstItem="ZW8-0V-ZXE" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Va2-GL-z8i"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cleanButton" destination="JNV-x7-PqE" id="Zv9-vj-5OP"/>
