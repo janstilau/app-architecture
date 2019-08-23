@@ -1,6 +1,45 @@
 import UIKit
 import AVFoundation
 
+//final class SharePlayer {
+//
+//	var audioPlayer: Player?
+//	var recording: Recording? {
+//		didSet {
+//			updateForChangedRecording()
+//		}
+//	}
+//
+//	func updateForChangedRecording() {
+//		if let r = recording, let url = r.fileURL {
+//			audioPlayer = Player(url: url) { [weak self] time in
+//				if let t = time {
+//					self?.updateProgressDisplays(progress: t, duration: self?.audioPlayer?.duration ?? 0)
+//				} else {
+//					self?.recording = nil
+//				}
+//			}
+//
+//			if let ap = audioPlayer {
+//				updateProgressDisplays(progress: 0, duration: ap.duration)
+//				title = r.name
+//				nameTextField?.text = r.name
+//				activeItemElements?.isHidden = false
+//				noRecordingLabel?.isHidden = true
+//			} else {
+//				recording = nil
+//			}
+//		} else {
+//			updateProgressDisplays(progress: 0, duration: 0)
+//			audioPlayer = nil
+//			title = ""
+//			activeItemElements?.isHidden = true
+//			noRecordingLabel?.isHidden = false
+//		}
+//	}
+//
+//}
+
 class PlayViewController: UIViewController, UITextFieldDelegate, AVAudioPlayerDelegate {
 	@IBOutlet var nameTextField: UITextField!
 	@IBOutlet var playButton: UIButton!

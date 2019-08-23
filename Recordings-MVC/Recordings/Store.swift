@@ -5,7 +5,6 @@ final class Store {
 	static private let documentDirectory = try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 	/**
 	这应该是 swift 中, 单例的最简单的写法, static let 一个变量, 然后下面的 init 要用 fileprivate 进行修饰.
-	
 	*/
 	static let shared = Store(url: documentDirectory)
 	
@@ -38,6 +37,7 @@ final class Store {
 	/**
 	整个 app 的音乐, 其实都是存放在了一个目录下的, 然后用一个 json 文件, 存储里面的层级信息, 所以在里面, 是用的 uuid 做唯一标识.
 	因为文件在同一个目录下, 所以 UUID 为名, 防止冲突.
+	store 的 save 的触发的时候, add, remove, setName
 	*/
 	func save(_ notifying: Item, userInfo: [AnyHashable: Any]) {
 		if let url = baseURL, let data = try? JSONEncoder().encode(rootFolder) {

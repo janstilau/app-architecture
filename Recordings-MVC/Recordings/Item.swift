@@ -3,17 +3,18 @@ import Foundation
 class Item {
 	let uuid: UUID
 	private(set) var name: String // private(set) 表示这个属性只能在类内设值, 类外不能修改
+	init(name: String, uuid: UUID) {
+		self.name = name
+		self.uuid = uuid
+		self.store = nil
+	}
+	
+	
 	weak var store: Store?
 	weak var parent: Folder? {
 		didSet {
 			store = parent?.store
 		}
-	}
-	
-	init(name: String, uuid: UUID) {
-		self.name = name
-		self.uuid = uuid
-		self.store = nil
 	}
 	
 	func setName(_ newName: String) {

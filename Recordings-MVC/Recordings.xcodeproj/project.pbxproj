@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0686356423103E7F00015D0A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0686356323103E7F00015D0A /* RootViewController.swift */; };
 		835F5B741F39C581006B1400 /* empty.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 835F5B731F39C269006B1400 /* empty.m4a */; };
 		8379F0CD1F2F197500CDB032 /* FolderViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379F0CC1F2F197500CDB032 /* FolderViewControllerTests.swift */; };
 		C90B60971EC00343008C9347 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90B60961EC00343008C9347 /* Store.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0686356323103E7F00015D0A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		835F5B731F39C269006B1400 /* empty.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.m4a; sourceTree = "<group>"; };
 		8379F0C21F2F193F00CDB032 /* RecordingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecordingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8379F0C61F2F193F00CDB032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C9EB56C21EAE33C1000EC5F4 /* FolderViewController.swift */,
 				C9EB56C41EAE33C1000EC5F4 /* PlayViewController.swift */,
 				C9D1859B1EC02D830028C0FA /* RecordViewController.swift */,
+				0686356323103E7F00015D0A /* RootViewController.swift */,
 			);
 			name = "App+Views";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				C9CFB02E1EC085CF004529FC /* Recorder.swift in Sources */,
 				C9CFB0351EC09427004529FC /* Item.swift in Sources */,
+				0686356423103E7F00015D0A /* RootViewController.swift in Sources */,
 				C90B60971EC00343008C9347 /* Store.swift in Sources */,
 				C9CFB0301EC08ACF004529FC /* Utilities.swift in Sources */,
 				C9CFB0391EC09464004529FC /* Folder.swift in Sources */,

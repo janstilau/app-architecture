@@ -6,6 +6,9 @@ class Player: NSObject, AVAudioPlayerDelegate {
 	private var timer: Timer?
 	private var update: (TimeInterval?) -> ()
 	
+	/**
+	update 的作用是, 在当前 player 播放时, 回传播放时间, 然后让生成方可以根据时间点, 进行界面的刷新, 或者其他操作.
+	*/
 	init?(url: URL, update: @escaping (TimeInterval?) -> ()) {
 		do {
 			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
