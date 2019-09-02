@@ -149,7 +149,8 @@ class FolderViewController: UITableViewController, RecordViewControllerDelegate 
 	
 	func insert(item: Item) {
 		self.folder.contents.append(item)
-		self.tableView.insertRows(at: [IndexPath(row: self.folder.contents.endIndex-1, section: 0)], with: .automatic)
+//		self.tableView.insertRows(at: [IndexPath(row: self.folder.contents.endIndex-1, section: 0)], with: .automatic)
+		self.tableView.reloadData()
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
